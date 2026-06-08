@@ -6,6 +6,38 @@
   body {
     @apply transition-colors duration-300;
   }
+
+  /* Fix vendor prefix warning: add standard appearance property */
+  button,
+  input:where([type='button']),
+  input:where([type='reset']),
+  input:where([type='submit']) {
+    appearance: none;
+  }
+
+  [type='search'] {
+    appearance: none;
+  }
+
+  ::-webkit-search-decoration {
+    appearance: none;
+  }
+
+  ::-webkit-file-upload-button {
+    appearance: none;
+  }
+
+  /* Fix vertical-align warning: remove vertical-align from block elements */
+  img,
+  svg,
+  video,
+  canvas,
+  audio,
+  iframe,
+  embed,
+  object {
+    vertical-align: unset;
+  }
 }
 
 @layer components {

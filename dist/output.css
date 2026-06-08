@@ -534,8 +534,6 @@ embed,
 object {
   display: block;
   /* 1 */
-  vertical-align: middle;
-  /* 2 */
 }
 
 /*
@@ -558,6 +556,46 @@ body {
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 300ms;
+}
+
+/* Fix vendor prefix warning: add standard appearance property */
+
+button,
+  input:where([type='button']),
+  input:where([type='reset']),
+  input:where([type='submit']) {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+[type='search'] {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+::-webkit-search-decoration {
+  -webkit-appearance: none;
+          appearance: none;
+}
+
+::-webkit-file-upload-button {
+  -webkit-appearance: none;
+          appearance: none;
+}
+
+/* Fix vertical-align warning: remove vertical-align from block elements */
+
+img,
+  svg,
+  video,
+  canvas,
+  audio,
+  iframe,
+  embed,
+  object {
+  vertical-align: unset;
 }
 
 .container {

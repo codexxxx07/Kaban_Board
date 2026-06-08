@@ -1,3 +1,7 @@
 {
-    "liveServer.settings.port": 5506
+    "liveServer.settings.port": 5509,
+    "css.lint.vendorPrefix": "ignore",
+    "css.lint.unknownVendorSpecificProperties": "ignore",
+    "css.lint.unknownAtRules": "ignore",
+    "tailwindCSS.lint.cssConflict": "ignore"
 }
