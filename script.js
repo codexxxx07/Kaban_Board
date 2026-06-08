@@ -18,7 +18,7 @@ const addTaskButtons = document.querySelectorAll('.add-task-btn');
 // Initialize Application
 document.addEventListener('DOMContentLoaded', () => {
     loadTasks();
-    loadTheme();
+    document.documentElement.classList.remove('dark');
     renderTasks();
     setupEventListeners();
 });
@@ -70,8 +70,6 @@ function loadTheme() {
 
 function toggleTheme() {
     document.documentElement.classList.toggle('dark');
-    const isDark = document.documentElement.classList.contains('dark');
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
 }
 
 // Task Management
