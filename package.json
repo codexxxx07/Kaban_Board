@@ -1,0 +1,18 @@
+{
+  "name": "kanban-board",
+  "version": "1.0.0",
+  "description": "A modern, responsive Kanban Board web application",
+  "main": "index.html",
+  "scripts": {
+    "build:css": "npx tailwindcss -i ./src/input.css -o ./dist/output.css",
+    "watch:css": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch"
+  },
+  "keywords": ["kanban", "board", "task-management"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "tailwindcss": "^3.4.0",
+    "postcss": "^8.4.0",
+    "autoprefixer": "^10.4.0"
+  }
+}

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanban Board</title>
+    <link rel="stylesheet" href="dist/output.css">
+</head>
+<body class="min-h-screen bg-gradient-to-br from-slate-100 via-blue-50 to-purple-50 dark:from-slate-900 dark:via-slate-800 dark:to-purple-900 transition-colors duration-300">
+    <div class="container mx-auto px-4 py-8 max-w-7xl">
+        <!-- Header -->
+        <header class="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
+            <h1 class="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                Kanban Board
+            </h1>
+            <div class="flex flex-wrap items-center gap-3">
+                <!-- Filter Buttons -->
+                <div class="flex gap-2">
+                    <button id="filterAll" class="btn-primary text-sm filter-btn active" data-filter="all">All</button>
+                    <button id="filterActive" class="btn-secondary text-sm filter-btn" data-filter="active">Active</button>
+                    <button id="filterCompleted" class="btn-secondary text-sm filter-btn" data-filter="completed">Completed</button>
+                </div>
+                <!-- Theme Toggle -->
+                <button id="themeToggle" class="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-200" aria-label="Toggle theme">
+                    <svg id="sunIcon" class="w-6 h-6 text-yellow-500 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                    </svg>
+                    <svg id="moonIcon" class="w-6 h-6 text-gray-700 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- Kanban Board -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- To-Do Column -->
+            <div class="column" id="todoColumn" data-status="todo">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-2">
+                        <div class="w-3 h-3 rounded-full bg-blue-500"></div>
+                        <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-200">To-Do</h2>
+                        <span id="todoCount" class="bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 text-sm font-medium px-2 py-0.5 rounded-full">0</span>
+                    </div>
+                    <button class="add-task-btn text-blue-500 hover:text-blue-600 transition-colors" data-status="todo" aria-label="Add task to To-Do">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div id="todoTasks" class="space-y-3 min-h-[300px] task-container">
+                    <!-- Tasks will be rendered here -->
+                </div>
+                <div id="todoEmpty" class="text-center py-8 text-gray-500 dark:text-gray-400 empty-placeholder">
+                    <svg class="w-12 h-12 mx-auto mb-2 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                    </svg>
+                    <p>No tasks yet</p>
+                </div>
+            </div>
+
+            <!-- Doing Column -->
+            <div class="column" id="doingColumn" data-status="doing">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-2">
+                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-200">Doing</h2>
+                        <span id="doingCount" class="bg-yellow-100 dark:bg-yellow-900 text-yellow-700 dark:text-yellow-300 text-sm font-medium px-2 py-0.5 rounded-full">0</span>
+                    </div>
+                    <button class="add-task-btn text-yellow-500 hover:text-yellow-600 transition-colors" data-status="doing" aria-label="Add task to Doing">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div id="doingTasks" class="space-y-3 min-h-[300px] task-container">
+                    <!-- Tasks will be rendered here -->
+                </div>
+                <div id="doingEmpty" class="text-center py-8 text-gray-500 dark:text-gray-400 empty-placeholder">
+                    <svg class="w-12 h-12 mx-auto mb-2 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                    </svg>
+                    <p>No tasks yet</p>
+                </div>
+            </div>
+
+            <!-- Done Column -->
+            <div class="column" id="doneColumn" data-status="done">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-2">
+                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-200">Done</h2>
+                        <span id="doneCount" class="bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 text-sm font-medium px-2 py-0.5 rounded-full">0</span>
+                    </div>
+                    <button class="add-task-btn text-green-500 hover:text-green-600 transition-colors" data-status="done" aria-label="Add task to Done">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div id="doneTasks" class="space-y-3 min-h-[300px] task-container">
+                    <!-- Tasks will be rendered here -->
+                </div>
+                <div id="doneEmpty" class="text-center py-8 text-gray-500 dark:text-gray-400 empty-placeholder">
+                    <svg class="w-12 h-12 mx-auto mb-2 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                    </svg>
+                    <p>No tasks yet</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Task Creation Modal -->
+    <div id="taskModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden items-center justify-center z-50">
+        <div class="glass-card rounded-2xl p-6 w-full max-w-md mx-4 animate-scale-in">
+            <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4">Create New Task</h3>
+            <form id="taskForm">
+                <div class="mb-4">
+                    <label for="taskText" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Task Description</label>
+                    <textarea 
+                        id="taskText" 
+                        rows="3" 
+                        class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none"
+                        placeholder="Enter your task..."
+                        required
+                    ></textarea>
+                </div>
+                <div class="mb-4">
+                    <label for="taskPriority" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Priority</label>
+                    <select 
+                        id="taskPriority" 
+                        class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                    >
+                        <option value="low">Low</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+                <div class="mb-4">
+                    <label for="taskStatus" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Column</label>
+                    <select 
+                        id="taskStatus" 
+                        class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                    >
+                        <option value="todo">To-Do</option>
+                        <option value="doing">Doing</option>
+                        <option value="done">Done</option>
+                    </select>
+                </div>
+                <div class="flex justify-end gap-3">
+                    <button type="button" id="cancelModal" class="btn-secondary">Cancel</button>
+                    <button type="submit" class="btn-primary">Create Task</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
