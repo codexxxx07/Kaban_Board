@@ -534,7 +534,6 @@ embed,
 object {
   display: block;
   /* 1 */
-  /* vertical-align intentionally removed to avoid lint warnings for display:block */
 }
 
 /*
@@ -702,10 +701,15 @@ img,
   --tw-shadow: var(--tw-shadow-colored);
 }
 
+.task-card {
+  will-change: transform, box-shadow;
+}
+
 .task-card:hover {
   --tw-scale-x: 1.02;
   --tw-scale-y: 1.02;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  will-change: transform;
 }
 
 .task-card.dragging {
@@ -717,6 +721,7 @@ img,
   --tw-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
   --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  will-change: transform, opacity;
 }
 
 .\!column {
@@ -803,18 +808,22 @@ img,
 
 .\!column {
   box-shadow: 0 10px 25px rgba(0,0,0,0.08) !important;
+  will-change: transform, box-shadow !important;
 }
 
 .column {
   box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  will-change: transform, box-shadow;
 }
 
 .\!column:hover {
   box-shadow: 0 20px 40px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.05) !important;
+  will-change: transform, box-shadow !important;
 }
 
 .column:hover {
   box-shadow: 0 20px 40px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.05);
+  will-change: transform, box-shadow;
 }
 
 .dark .column {
@@ -859,6 +868,14 @@ img,
 
 .column.drag-over:is(.dark *) {
   background-color: rgb(30 58 138 / 0.2);
+}
+
+.\!column.drag-over {
+  will-change: background-color, box-shadow !important;
+}
+
+.column.drag-over {
+  will-change: background-color, box-shadow;
 }
 
 .btn-primary {
@@ -1440,7 +1457,8 @@ img,
 }
 
 .animate-fade-in {
-  animation: fadeIn 0.5s ease-in-out;
+  animation: fadeIn 0.3s ease-out;
+  will-change: opacity, transform;
 }
 
 @keyframes fadeIn {
