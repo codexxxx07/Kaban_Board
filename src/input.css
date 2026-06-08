@@ -14,7 +14,7 @@
   }
   
   .task-card {
-    @apply glass-card rounded-xl p-4 shadow-lg hover:shadow-xl transition-all duration-200 cursor-grab active:cursor-grabbing;
+    @apply glass-card rounded-xl p-4 shadow-lg hover:shadow-xl transition-all duration-200 cursor-grab active:cursor-grabbing dark:bg-slate-700 dark:hover:bg-slate-600 dark:border dark:border-slate-600 dark:hover:shadow-lg dark:transition-all dark:duration-300 dark:hover:shadow-indigo-500/20;
   }
   
   .task-card:hover {
@@ -26,7 +26,7 @@
   }
   
   .column {
-    @apply bg-gray-50 dark:bg-slate-800 rounded-2xl p-4 min-h-[400px] transition-all duration-300 ease-in-out hover:scale-[1.01] hover:shadow-xl border border-gray-200/5 dark:border-slate-700/50 backdrop-blur-sm shadow-md shadow-lg;
+    @apply bg-gray-50 dark:bg-slate-800 rounded-2xl p-4 min-h-[400px] transition-all duration-300 ease-in-out hover:scale-[1.01] hover:shadow-xl border border-gray-200/5 dark:border-slate-700 dark:shadow-lg dark:shadow-black/40 backdrop-blur-sm shadow-md shadow-lg;
     box-shadow: 0 10px 25px rgba(0,0,0,0.08);
   }
 
@@ -39,7 +39,7 @@
   }
 
   .dark .column:hover {
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.05);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05);
   }
   
   .column.drag-over {

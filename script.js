@@ -221,7 +221,7 @@ function createTaskElement(task) {
                 </svg>
             </button>
         </div>
-        <p class="text-gray-800 dark:text-gray-200 text-sm leading-relaxed">${escapeHtml(task.text)}</p>
+        <p class="text-gray-800 dark:text-gray-300 text-sm leading-relaxed">${escapeHtml(task.text)}</p>
     `;
     
     // Delete button event
