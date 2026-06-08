@@ -32,8 +32,58 @@
             </div>
         </header>
 
+        <!-- Skeleton Loader -->
+        <div id="skeletonLoader" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- To-Do Skeleton Column -->
+            <div class="column">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-2">
+                        <div class="w-3 h-3 rounded-full bg-gray-300 dark:bg-slate-600 animate-pulse"></div>
+                        <div class="h-6 w-20 bg-gray-300 dark:bg-slate-600 rounded animate-pulse"></div>
+                    </div>
+                    <div class="w-6 h-6 bg-gray-300 dark:bg-slate-600 rounded animate-pulse"></div>
+                </div>
+                <div class="space-y-3">
+                    <div class="skeleton-card h-24 rounded-xl animate-pulse"></div>
+                    <div class="skeleton-card h-24 rounded-xl animate-pulse"></div>
+                    <div class="skeleton-card h-24 rounded-xl animate-pulse"></div>
+                </div>
+            </div>
+
+            <!-- Doing Skeleton Column -->
+            <div class="column">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-2">
+                        <div class="w-3 h-3 rounded-full bg-gray-300 dark:bg-slate-600 animate-pulse"></div>
+                        <div class="h-6 w-20 bg-gray-300 dark:bg-slate-600 rounded animate-pulse"></div>
+                    </div>
+                    <div class="w-6 h-6 bg-gray-300 dark:bg-slate-600 rounded animate-pulse"></div>
+                </div>
+                <div class="space-y-3">
+                    <div class="skeleton-card h-24 rounded-xl animate-pulse"></div>
+                    <div class="skeleton-card h-24 rounded-xl animate-pulse"></div>
+                </div>
+            </div>
+
+            <!-- Done Skeleton Column -->
+            <div class="column">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-2">
+                        <div class="w-3 h-3 rounded-full bg-gray-300 dark:bg-slate-600 animate-pulse"></div>
+                        <div class="h-6 w-20 bg-gray-300 dark:bg-slate-600 rounded animate-pulse"></div>
+                    </div>
+                    <div class="w-6 h-6 bg-gray-300 dark:bg-slate-600 rounded animate-pulse"></div>
+                </div>
+                <div class="space-y-3">
+                    <div class="skeleton-card h-24 rounded-xl animate-pulse"></div>
+                    <div class="skeleton-card h-24 rounded-xl animate-pulse"></div>
+                    <div class="skeleton-card h-24 rounded-xl animate-pulse"></div>
+                </div>
+            </div>
+        </div>
+
         <!-- Kanban Board -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div id="kanbanBoard" class="grid grid-cols-1 md:grid-cols-3 gap-6 hidden">
             <!-- To-Do Column -->
             <div class="column" id="todoColumn" data-status="todo">
                 <div class="flex justify-between items-center mb-4">

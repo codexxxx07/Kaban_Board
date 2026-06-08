@@ -21,7 +21,22 @@ document.addEventListener('DOMContentLoaded', () => {
     document.documentElement.classList.remove('dark');
     renderTasks();
     setupEventListeners();
+    handleSkeletonLoading();
 });
+
+// Skeleton Loading
+function handleSkeletonLoading() {
+    const skeleton = document.getElementById('skeletonLoader');
+    const board = document.getElementById('kanbanBoard');
+
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            skeleton.style.display = 'none';
+            board.classList.remove('hidden');
+            board.classList.add('animate-fade-in');
+        }, 1200);
+    });
+}
 
 // Event Listeners Setup
 function setupEventListeners() {
