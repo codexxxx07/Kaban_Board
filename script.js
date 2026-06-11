@@ -84,7 +84,7 @@
             setTimeout(() => {
                 DOM.skeletonLoader.style.display = 'none';
                 DOM.kanbanBoard.classList.remove('hidden');
-                DOM.kanbanBoard.classList.add('animate-fade-in');
+                DOM.kanbanBoard.classList.add('grid', 'animate-fade-in');
             }, 1200);
         });
     }
