@@ -6,9 +6,8 @@ A modern, responsive, and feature-rich Kanban Board web application designed for
 
 ## 📸 Preview
 
-Screenshots of the application can be found in the `/screenshots` folder.
-
-*(Add your application screenshots here to showcase the UI)*
+Example: ![Light Mode](/assets/LightMode.png)
+Example: ![Dark Mode](/assets/DarkMode.png)
 
 ---
 
